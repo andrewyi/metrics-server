@@ -29,9 +29,12 @@ spec:
         emptyDir: {}
       containers:
       - name: metrics-server
-        image: k8s.gcr.io/metrics-server-amd64:v0.3.3
+        image: kirklandatdocker/metrics-server-amd64:v0.3.3
         imagePullPolicy: Always
         volumeMounts:
         - name: tmp-dir
           mountPath: /tmp
+        args:
+        - --kubelet-insecure-tls
+        - --kubelet-preferred-address-types=InternalIP
 
